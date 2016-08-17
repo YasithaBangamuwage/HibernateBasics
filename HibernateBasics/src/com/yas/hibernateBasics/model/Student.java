@@ -7,6 +7,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,11 +19,16 @@ import javax.persistence.Transient;
  * @author YAS 
  * This class contain basic hibernate annotations.
  */
+
+// @Entity mention the entity
 @Entity
+// @Table mention the table name if we wants to set name other than model name
 @Table(name = "Student")
 public class Student {
 
-	@Id
+	// @Id for mention the primary key
+	// @GeneratedValue for auto generated primary key value
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int studentNo;
 
 	// Change the column name other than variable name in model class, set not
