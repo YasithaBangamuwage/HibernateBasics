@@ -29,6 +29,6 @@
         <!-- Mention here all the model classes along with their package name -->
  		<mapping class="com.yas.hibernateBasics.model.Student"/>
  		
- 		 
+ 		<mapping class="com.yas.hibernateBasics.model.StudentInfo"/>
     </session-factory>
 </hibernate-configuration>

@@ -5,15 +5,17 @@ package com.yas.hibernateBasics.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 /**
  * @author YAS 
@@ -35,12 +37,32 @@ public class Student {
 	// nullable to column value
 	@Column(name = "studentName", nullable = false)
 	// Completely ignore the column
-	@Transient
+	//@Transient
 	private String name;
 
 	// Store only date in the column value
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
+	
+	//used for bidirectional one to one mapping
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "studentNo")
+	private StudentInfo studentInfo;
+	
+
+	/**
+	 * @return the studentInfo
+	 */
+	public StudentInfo getStudentInfo() {
+		return studentInfo;
+	}
+
+	/**
+	 * @param studentInfo the studentInfo to set
+	 */
+	public void setStudentInfo(StudentInfo studentInfo) {
+		this.studentInfo = studentInfo;
+	}
 
 	/**
 	 * @return the birthDate
