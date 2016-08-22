@@ -12,14 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author YAS 
- * This class contain basic hibernate annotations.
+ * @author YAS This class contain basic hibernate annotations.
  */
 
 // @Entity mention the entity
@@ -30,25 +30,48 @@ public class Student {
 
 	// @Id for mention the primary key
 	// @GeneratedValue for auto generated primary key value
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int studentNo;
 
 	// Change the column name other than variable name in model class, set not
 	// nullable to column value
 	@Column(name = "studentName", nullable = false)
 	// Completely ignore the column
-	//@Transient
+	// @Transient
 	private String name;
 
 	// Store only date in the column value
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
-	
-	//used for bidirectional one to one mapping
-	@OneToOne(cascade=CascadeType.ALL)
+
+	// used for bidirectional one to one mapping
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "studentNo")
 	private StudentInfo studentInfo;
-	
+
+	// many students have one course
+	@ManyToOne(cascade = CascadeType.ALL)
+	// @JoinColumn is name for the new column that adding by mapping
+	// if no @JoinColumn mentioned then new column name like
+	// tableName_joinColumn_name
+	@JoinColumn(name = "courseId")
+	private Course course;
+
+	/**
+	 * @return the course
+	 */
+	public Course getCourse() {
+		return course;
+	}
+
+	/**
+	 * @param course
+	 *            the course to set
+	 */
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 
 	/**
 	 * @return the studentInfo
@@ -58,7 +81,8 @@ public class Student {
 	}
 
 	/**
-	 * @param studentInfo the studentInfo to set
+	 * @param studentInfo
+	 *            the studentInfo to set
 	 */
 	public void setStudentInfo(StudentInfo studentInfo) {
 		this.studentInfo = studentInfo;
