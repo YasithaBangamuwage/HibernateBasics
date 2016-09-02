@@ -9,7 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.yas.hibernateBasics.model.Course;
+import com.yas.hibernateBasics.model.City;
 import com.yas.hibernateBasics.model.Student;
 
 /**
@@ -24,19 +24,19 @@ public class ManyToOneMain {
 	public static void main(String[] args) {
 
 		// many to one mapping
-		// many students have one course
-		/*Course course = new Course();
-		course.setCourseName("IT");
+		// many students have one City
+		/*City city = new City();
+		city.setCityName("colombo");
 
 		Student student = new Student();
 		student.setName("yasitha");
 		student.setBirthDate(new Date());
-		student.setCourse(course);
+		student.setCity(city);
 
 		Student student2 = new Student();
 		student2.setName("thilantha");
 		student2.setBirthDate(new Date());
-		student2.setCourse(course);
+		student2.setCity(city);
 
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -52,29 +52,29 @@ public class ManyToOneMain {
 		sessionFactory.close();*/
 
 		// one to many mapping
-		// one course have many students
+		// one City have many students
 
-		Course course = new Course();
-		course.setCourseName("IT");
+		City city = new City();
+		city.setCityName("colombo");
 
 		Student student = new Student();
 		student.setName("yasitha");
 		student.setBirthDate(new Date());
-		student.setCourse(course);
+		student.setCity(city);
 
 		Student student2 = new Student();
 		student2.setName("thilantha");
 		student2.setBirthDate(new Date());
-		student2.setCourse(course);
+		student2.setCity(city);
 
-		course.getStudents().add(student);
-		course.getStudents().add(student2);
+		city.getStudents().add(student);
+		city.getStudents().add(student2);
 
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		session.save(course);
+		session.save(city);
 
 		session.getTransaction().commit();
 		session.close();

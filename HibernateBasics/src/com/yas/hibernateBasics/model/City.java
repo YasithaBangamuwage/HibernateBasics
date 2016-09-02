@@ -19,18 +19,18 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "Course")
-public class Course {
+@Table(name = "City")
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int courseId;
-	private String courseName;
+	private int cityId;
+	private String cityName;
 
-	// one course have many students
+	// one City have many students
 	// mappedBy value is reference to student object reference attribute
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
 	private Set<Student> students = new HashSet<Student>(0);
 
 	/**
@@ -50,33 +50,33 @@ public class Course {
 	}
 
 	/**
-	 * @return the courseId
+	 * @return the cityId
 	 */
-	public int getCourseId() {
-		return courseId;
+	public int getCityId() {
+		return cityId;
 	}
 
 	/**
-	 * @param courseId
-	 *            the courseId to set
+	 * @param cityId
+	 *            the cityId to set
 	 */
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
+	public void setCityId(int courseId) {
+		this.cityId = courseId;
 	}
 
 	/**
-	 * @return the courseName
+	 * @return the cityName
 	 */
-	public String getCourseName() {
-		return courseName;
+	public String getCityName() {
+		return cityName;
 	}
 
 	/**
-	 * @param courseName
-	 *            the courseName to set
+	 * @param cityName
+	 *            the cityName to set
 	 */
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 
 }

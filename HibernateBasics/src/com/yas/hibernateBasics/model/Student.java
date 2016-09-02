@@ -50,27 +50,27 @@ public class Student {
 	@JoinColumn(name = "studentNo")
 	private StudentInfo studentInfo;
 
-	// many students have one course
+	// many students have one City
 	@ManyToOne(cascade = CascadeType.ALL)
 	// @JoinColumn is name for the new column that adding by mapping
 	// if no @JoinColumn mentioned then new column name like
 	// tableName_joinColumn_name
-	@JoinColumn(name = "courseId")
-	private Course course;
+	@JoinColumn(name = "cityId")
+	private City city;
 
 	/**
-	 * @return the course
+	 * @return the city
 	 */
-	public Course getCourse() {
-		return course;
+	public City getCity() {
+		return city;
 	}
 
 	/**
-	 * @param course
+	 * @param city
 	 *            the course to set
 	 */
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	/**
