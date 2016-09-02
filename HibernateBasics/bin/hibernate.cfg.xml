@@ -30,6 +30,7 @@
  		<mapping class="com.yas.hibernateBasics.model.Student"/>
  		<mapping class="com.yas.hibernateBasics.model.StudentInfo"/>
  		<mapping class="com.yas.hibernateBasics.model.City"/>
+ 		<mapping class="com.yas.hibernateBasics.model.Course"/>
  		
     </session-factory>
 </hibernate-configuration>

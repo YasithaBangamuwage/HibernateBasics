@@ -4,6 +4,8 @@
 package com.yas.hibernateBasics.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -57,6 +60,25 @@ public class Student {
 	// tableName_joinColumn_name
 	@JoinColumn(name = "cityId")
 	private City city;
+	
+	//many students have many courses
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Course> courses = new HashSet<Course>(0);
+
+	/**
+	 * @return the courses
+	 */
+	
+	public Set<Course> getCourses() {
+		return courses;
+	}
+
+	/**
+	 * @param courses the courses to set
+	 */
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
+	}
 
 	/**
 	 * @return the city
