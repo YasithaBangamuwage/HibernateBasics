@@ -43,6 +43,7 @@ public class CRUDMain {
 		// this will delete all the values related to that object.
 		session.delete(student2);
 
+		
 		session.getTransaction().commit();
 		session.close();
 		sessionFactory.close();
